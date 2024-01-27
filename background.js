@@ -1,15 +1,10 @@
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === 'complete' && tab.active) {
-    // Here you would call the APIs to scan the tab.url
-    scanWithDatadog(tab.url);
-    scanWithGoogleSafeBrowsing(tab.url);
-  }
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'dataFound') {
+        chrome.notifications.create({
+            type: 'basic',
+            iconUrl: 'warning.png', 
+            title: 'Sensitive Data Alert',
+            message: 'Sensitive data found on this page!'
+        });
+    }
 });
-
-function scanWithDatadog(url) {
-  // API call to Datadog's sensitive data scanner
-}
-
-function scanWithGoogleSafeBrowsing(url) {
-  // API call to Google's Safe Browsing API
-}
