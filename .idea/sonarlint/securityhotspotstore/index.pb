@@ -11,3 +11,5 @@ popup.html,6\a\6a292f9ab3d658b2908a708077dc82f45eef57d9
 output.css,7\c\7c5ed10aeb0f39e8f632c51688808a3c2410220e
 8
 popup.js,0\e\0eb7f254729257427b56a71afa8b1f15ab0d004d
+=
+manifest.json,c\a\ca642a22686971b261b60de81d8ff554fdd91e2e
