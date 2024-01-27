@@ -42,3 +42,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Save the data when the button is clicked
     saveButton.addEventListener('click', saveData);
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var saveButton = document.getElementById('saveButton');
+
+    saveButton.addEventListener('click', function () {
+        // Perform actions when save button is clicked
+        // For example, closing the popup window
+        window.close();
+    });
+});
