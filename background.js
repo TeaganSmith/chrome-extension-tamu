@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             // Create the notification
             chrome.notifications.create(notificationId, {
                 type: 'basic',
-                iconUrl: 'warning.png', 
+                iconUrl: 'warning.png',
                 title: 'Sensitive Data Alert',
                 message: 'Sensitive data found on this page!'
             }, () => {
@@ -22,3 +22,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
     }
 });
+
+console.log("Background script loaded");
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'dataFound') {
+        console.log('Sensitive data found:', message.data);
+        // Trigger warning or take appropriate action
+    }
+});
+
