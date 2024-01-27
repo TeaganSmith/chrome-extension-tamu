@@ -1,18 +1,25 @@
 console.log('Content script running');
 
 function scanWebPage(userData) {
-    const pageContent = document.body.innerText;
-    const foundData = {};
+    let foundData = {};
+    let walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        null,
+        false
+    );
 
-    for (const [key, value] of Object.entries(userData)) {
-        if (pageContent = document.body.innerText) {
-            foundData[key] = value; 
+    let node;
+    while (node = walker.nextNode()) {
+        for (const [key, value] of Object.entries(userData)) {
+            if (node.nodeValue.includes(value)) {
+                foundData[key] = value;
+            }
         }
     }
 
-    return foundData
+    return foundData;
 }
-
 
 function sendFoundDataToBackground(foundData) {
     chrome.runtime.sendMessage({ type: 'dataFound', data: foundData });
@@ -30,14 +37,10 @@ function getUserData() {
     });
 }
 
+// Example usage
 getUserData().then(userData => {
-    const foundData = scanWebPage(userData);
-
+    let foundData = scanWebPage(userData);
     if (Object.keys(foundData).length > 0) {
-        console.log('Sensitive data found:', foundData);
         sendFoundDataToBackground(foundData);
     }
-}).catch(error => {
-    console.error(error);
-});
-
+}).catch(error => console.error(error));

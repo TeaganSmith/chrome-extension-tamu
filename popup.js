@@ -1,3 +1,5 @@
+console.log('test');
+
 document.addEventListener('DOMContentLoaded', function () {
     const saveButton = document.getElementById('saveButton');
 
