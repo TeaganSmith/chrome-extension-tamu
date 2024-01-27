@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Security Scanner",
+    "version": "1.0",
+    "permissions": ["tabs", "activeTab", "storage", "webRequest", "<ALL_URLS>"],
+    "host_permissions": [
+      "https://*.datadoghq.com/*",
+      "https://safebrowsing.googleapis.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "icons": {
+    }
+  }
+  

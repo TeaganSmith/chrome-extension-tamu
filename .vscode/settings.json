@@ -1,0 +1,7 @@
+{
+    "editor.formatOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "files.autoSave": "onFocusChange",
+    "javascript.validate.enable": false // if you're using TypeScript or Babel
+  }
+  
