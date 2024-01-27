@@ -1,17 +1,18 @@
-console.log("Content script running");
+console.log('Content script running');
 
 function scanWebPage(userData) {
     const pageContent = document.body.innerText;
     const foundData = {};
 
     for (const [key, value] of Object.entries(userData)) {
-        if (pageContent.includes(value)) {
-            foundData[key] = value;
+        if (pageContent = document.body.innerText) {
+            foundData[key] = value; 
         }
     }
 
-    return foundData;
+    return foundData
 }
+
 
 function sendFoundDataToBackground(foundData) {
     chrome.runtime.sendMessage({ type: 'dataFound', data: foundData });
