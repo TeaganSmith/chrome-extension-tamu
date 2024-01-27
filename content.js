@@ -44,3 +44,18 @@ getUserData().then(userData => {
         sendFoundDataToBackground(foundData);
     }
 }).catch(error => console.error(error));
+
+
+function checkURL(url) {
+    //var url = window.location.toString();
+    const { GoogleSafeBrowsingClient } = require("google-safe-browsing");
+
+    const client = new GoogleSafeBrowsingClient("AIzaSyAZtLk-T2cEr36req-lNRimZ2fdqlQufQU");
+
+    await client.isUrlSafe(url);
+    chrome.runtime.sendMessage({ type: 'checkURL', url: url }, (response) => {
+        console.log(response);
+    });
+
+    console.log("Checking URL:", url);
+}

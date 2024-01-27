@@ -31,4 +31,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         // Trigger warning or take appropriate action
     }
 });
-
+chrome.webNavigation.onCompleted.addListener(function (details) {
+    // 'details.url' contains the URL of the newly loaded page
+    checkURL(details.url);
+});
