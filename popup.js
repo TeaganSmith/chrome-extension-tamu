@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to save data
     function saveData() {
         const userData = {
-            ssn: document.getElementById('ssn').value,
-            home: document.getElementById('home').value,
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
             phone: document.getElementById('phone').value
         };
 
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function loadData() {
         chrome.storage.local.get('userData', function (result) {
             if (result.userData) {
-                document.getElementById('ssn').value = result.userData.ssn || '';
-                document.getElementById('home').value = result.userData.home || '';
+                document.getElementById('name').value = result.userData.name || '';
+                document.getElementById('email').value = result.userData.email || '';
                 document.getElementById('phone').value = result.userData.phone || '';
             }
         });
